@@ -1,0 +1,30 @@
+.not-found {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/src/assets/images/jpg/page-not-found.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    &-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 2rem;
+        font-size: 60px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: red;
+        text-align: center;
+    }
+}
+
+.back-page{
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid red;
+    color: red;
+}

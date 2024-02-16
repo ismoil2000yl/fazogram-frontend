@@ -1,0 +1,68 @@
+@mixin sm {
+    @media screen and (max-width: $sm) {
+        @content;
+        .container{
+            max-width: 575px;
+        }
+    }
+}
+
+@mixin md {
+    @media screen and (max-width: $md) {
+        @content;
+        .container{
+            max-width: 766px;
+        }
+    }
+}
+
+@mixin lg {
+    @media screen and (max-width: $lg) {
+        @content;
+        .container{
+            max-width: 991px;
+        }
+    }
+}
+
+@mixin xl {
+    @media screen and (max-width: $xl) {
+        @content;
+        .container{
+            max-width: 1199px;
+        }
+    }
+}
+
+@mixin xxl {
+    @media screen and (max-width: $xxl) {
+        @content;
+        .container{
+            max-width: 1399px;
+        }
+    }
+}
+
+@mixin font(
+  $color: #000,
+  $font-size: 16px,
+  $line-height: 150%,
+  $font-weigth: 500,
+  $margin-bottom: 0px,
+  $font-family: "sans-serif"
+) {
+  color: $color;
+  font-size: $font-size;
+  line-height: $line-height;
+  font-weight: $font-weigth;
+  margin-bottom: $margin-bottom;
+  font-family: $font-family;
+}
+
+@mixin sliceText($num: 1, $word-break: normal) {
+    display: -webkit-box !important;
+    -webkit-line-clamp: $num !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    word-break: $word-break;
+}

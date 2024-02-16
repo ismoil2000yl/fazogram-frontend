@@ -1,0 +1,132 @@
+.sign {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/src/assets/images/jpg/background-login.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    &__box {
+        width: 300px;
+        background: linear-gradient(135deg, #EBF8FE 0%, #EFF9FA 100%);
+        backdrop-filter: blur(30px);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px;
+        box-shadow: 10px 20px 30px #D8F4FF;
+        overflow: hidden;
+        padding-bottom: 1.5rem;
+
+        &__inbox {
+
+            width: 100%;
+            height: 100%;
+
+            &__title {
+                font-size: 30px;
+                color: white;
+                font-weight: bold;
+                text-align: center;
+                background-color: #8EE7FA;
+                padding: 1rem 0;
+            }
+
+            &__inbox {
+                padding: 1rem;
+
+                &__input {
+                    border-bottom: 1px solid #8EE7FA;
+                    background-color: white;
+                    width: 100%;
+                    padding: .8rem 1rem;
+                    font-size: 16px;
+                    margin: .5rem 0;
+                    color: #112747;
+                    padding-right: 2rem;
+                }
+            }
+
+            &__sign {
+                padding: 0 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                gap: 1rem;
+
+                &__btn {
+                    padding: .5rem 1.2rem;
+                    border: 1px solid #112747 !important;
+                    color: #112747;
+                    border-radius: 5px;
+                    transition: all .3s ease-in-out;
+
+                    &:hover {
+                        color: white;
+                        background-color: #112747;
+                    }
+                }
+            }
+        }
+    }
+
+    &-btn {
+        width: 100%;
+        padding: .7rem 1.5rem;
+        margin-top: 1rem;
+        border-radius: 5px;
+        color: white;
+        transition: all .3s ease-in-out;
+        background-color: #304E85;
+
+        &:hover {
+            background-color: #112747;
+        }
+    }
+}
+
+.password {
+    position: relative;
+}
+
+.see {
+    width: 27px;
+    height: 27px;
+    position: absolute;
+    right: 5px;
+    top: 0;
+}
+
+.sign-image {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    position: relative;
+    cursor: pointer;
+
+    &-item {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid #0EDCFF;
+    }
+}
+
+.sign-label {
+    cursor: pointer;
+}
+
+.add-picture {
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+    background-color: white;
+    cursor: pointer;
+    z-index: 99;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
