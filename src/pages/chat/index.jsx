@@ -18,14 +18,19 @@ const index = () => {
     setMembers(payload)
   });
 
-  const getMembers = async () => {
-    const data = await axios.get("http://localhost:5001/users/users")
-    setMembers(data?.data)
-  }
+  // const getMembers = async () => {
+  //   const data = await axios.get("http://localhost:5001/users/users")
+  //   setMembers(data?.data)
+  // }
 
-  useEffect(() => {
-    getMembers()
-  }, [])
+  // useEffect(() => {
+  //   getMembers()
+  // }, [])
+
+  socket.emit('get_user_all');
+  socket.on('send_user_all', (data) => {
+    setMembers(data)
+  });
 
   const [value, setValue] = useState("")
   const user = useSelector(state => state.user)
