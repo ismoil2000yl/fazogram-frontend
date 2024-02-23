@@ -1,11 +1,12 @@
 import { Button, Popconfirm } from 'antd';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { MailOutlined, VideoCameraOutlined, PhoneOutlined, PlusOutlined, FormOutlined, LogoutOutlined, QuestionCircleOutlined } from "@ant-design/icons";
 import { useLogoutUserMutation } from '../../services/appApi';
 import IconImg from '/src/assets/images/png/accaunt.png'
 import axios from 'axios'
 import React, { useContext, useRef, useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { addNotifications, resetNotifications } from '/src/features/userSlice'
 import { AppContext } from '../../context/appContext'
 import IconGalochka from '/src/assets/images/png/galochka.png'
 
@@ -17,7 +18,10 @@ const profil = () => {
 
     const [data, setData] = useState([])
     const [userData, setUserData] = useState({})
-    const { socket } = useContext(AppContext)
+    const { socket, setPrivateMemberMsg, currentRoom, setCurrentRoom } = useContext(AppContext)
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     socket.emit('get_data');
     socket.on('send_data', (data) => {
@@ -28,6 +32,38 @@ const profil = () => {
     socket.on('send_user', (data) => {
         setUserData(data)
     });
+
+    socket.off('notifications').on('notifications', (room) => {
+        if (currentRoom !== room) dispatch(addNotifications(room))
+    })
+
+    const orderIds = (id1, id2) => {
+        if (id1 > id2) {
+            return id1 + "-" + id2
+        }
+        else {
+            return id2 + "-" + id1
+        }
+    }
+
+    const joinRoom = (room, isPublic = true) => {
+        socket.emit("join-room", room)
+        setCurrentRoom(room)
+
+        if (isPublic) {
+            setPrivateMemberMsg(null)
+        }
+
+        dispatch(resetNotifications(room))
+
+    }
+
+    const handlePrivateMemberMsg = (member) => {
+        setPrivateMemberMsg(member)
+        const roomId = orderIds(user._id, member._id)
+        joinRoom(roomId, false)
+        navigate("/message")
+    }
 
     return (
         <div className='profil'>
@@ -47,7 +83,7 @@ const profil = () => {
             <div className="profil_btn">
                 <Button><PhoneOutlined className='rotate-90' />Audio qo'ng'iroq</Button>
                 <Button><VideoCameraOutlined />Video qo'ng'iroq</Button>
-                <Button><MailOutlined />Xabar yuborish</Button>
+                <Button onClick={() => handlePrivateMemberMsg(userData)}><MailOutlined />Xabar yuborish</Button>
             </div>
             <div className="profil_post">
                 <div className="profil_post_btn">
