@@ -73,8 +73,8 @@ const profil = () => {
       </div>
       <div className="profil_post">
         <div className="profil_post_btn">
-          <Button onClick={() => setActiveBtn("matn")} type={activeBtn === "matn" && 'primary'}>Matnli postlar</Button>
-          <Button onClick={() => setActiveBtn("rasm")} type={activeBtn === "rasm" && 'primary'}>Rasmli postlar</Button>
+          <Button onClick={() => setActiveBtn("matn")} type={activeBtn === "matn" && 'link'}>Matnli postlar</Button>
+          <Button onClick={() => setActiveBtn("rasm")} type={activeBtn === "rasm" && 'link'}>Rasmli postlar</Button>
         </div>
         <hr />
       </div>

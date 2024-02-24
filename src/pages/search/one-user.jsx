@@ -1,10 +1,7 @@
-import { Button, Popconfirm } from 'antd';
+import { Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux'
-import { MailOutlined, VideoCameraOutlined, PhoneOutlined, PlusOutlined, FormOutlined, LogoutOutlined, QuestionCircleOutlined } from "@ant-design/icons";
-import { useLogoutUserMutation } from '../../services/appApi';
-import IconImg from '/src/assets/images/png/accaunt.png'
-import axios from 'axios'
-import React, { useContext, useRef, useState, useEffect } from 'react'
+import { MailOutlined, VideoCameraOutlined, PhoneOutlined } from "@ant-design/icons";
+import React, { useContext, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { addNotifications, resetNotifications } from '/src/features/userSlice'
 import { AppContext } from '../../context/appContext'
@@ -82,7 +79,7 @@ const profil = () => {
             </div>
             <div className="profil_btn">
                 <Button><PhoneOutlined className='rotate-90' />Audio qo'ng'iroq</Button>
-                <Button><VideoCameraOutlined />Video qo'ng'iroq</Button>
+                <Button onClick={() => callUser(userData._id)}><VideoCameraOutlined />Video qo'ng'iroq</Button>
                 <Button onClick={() => handlePrivateMemberMsg(userData)}><MailOutlined />Xabar yuborish</Button>
             </div>
             <div className="profil_post">

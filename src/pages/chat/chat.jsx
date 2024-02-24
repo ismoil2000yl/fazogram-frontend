@@ -21,7 +21,7 @@ const index = () => {
             <div className="message-header">
                 <div className="message-header-box">
                     <div className="message-header-box-left">
-                        <button onClick={() => navigate("/chat")} className="message-header-box-left-btn">
+                        <button onClick={() => navigate(-1)} className="message-header-box-left-btn">
                             <img src={IconBack} alt="" />
                         </button>
                         <div className="message-header-box-left-box user">

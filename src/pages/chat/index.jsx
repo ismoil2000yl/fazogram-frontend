@@ -13,10 +13,20 @@ import IconSaved from '/src/assets/images/png/saved.png'
 const index = () => {
 
   const { socket, setMembers, setPrivateMemberMsg, setCurrentRoom, currentRoom, members } = useContext(AppContext)
+  const [value, setValue] = useState("")
+  const user = useSelector(state => state.user)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   socket.off("new-user").on("new-user", (payload) => {
     setMembers(payload)
   });
+
+  useEffect(() => {
+    if (user) {
+      socket.emit("new-user")
+    }
+  }, [])
 
   // const getMembers = async () => {
   //   const data = await axios.get("http://localhost:5001/users/users")
@@ -26,16 +36,6 @@ const index = () => {
   // useEffect(() => {
   //   getMembers()
   // }, [])
-
-  socket.emit('get_user_all');
-  socket.on('send_user_all', (data) => {
-    setMembers(data)
-  });
-
-  const [value, setValue] = useState("")
-  const user = useSelector(state => state.user)
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
 
   const joinRoom = (room, isPublic = true) => {
     socket.emit("join-room", room)

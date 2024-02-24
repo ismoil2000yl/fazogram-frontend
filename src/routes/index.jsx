@@ -11,6 +11,7 @@ const Profil = lazy(() => import("../pages/profil"))
 const Message = lazy(() => import("../pages/chat/chat"))
 const Text = lazy(() => import("../pages/text"))
 const OneUser = lazy(() => import("../pages/search/one-user"))
+const VideoVizf = lazy(()=>import("../pages/videovizf"))
 
 const authRoutes = [
   {
@@ -60,6 +61,10 @@ const privateRoutes = [
   {
     path: "/user/:id",
     element: <OneUser />
+  },
+  {
+    path: "/videoqongiroq/:id",
+    element: <VideoVizf />
   }
 ];
 

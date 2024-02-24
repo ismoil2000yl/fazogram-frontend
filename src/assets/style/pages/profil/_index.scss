@@ -13,6 +13,14 @@
         gap: 2rem;
         margin-top: 3rem;
 
+        @include lg {
+            width: 90%;
+        }
+
+        @include md {
+            width: 80%;
+        }
+
         @include sm {
             width: 100%;
             flex-direction: column;
@@ -21,13 +29,6 @@
             gap: 1rem;
         }
 
-        @include md {
-            width: 80%;
-        }
-
-        @include lg {
-            width: 90%;
-        }
 
         &_img {
             width: 200px;
