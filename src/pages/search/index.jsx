@@ -27,11 +27,13 @@ const index = () => {
   //   getMembers()
   // }, [])
 
-  socket.emit('get_user_all');
-  socket.on('send_user_all', (data) => {
-    console.log(data);
-    setMembers(data)
-  });
+  const user = useSelector(state => state.user)
+
+  useEffect(() => {
+    if (user) {
+      socket.emit("new-user")
+    }
+  }, [])
 
   const [value, setValue] = useState("")
   const user = useSelector(state => state.user)
