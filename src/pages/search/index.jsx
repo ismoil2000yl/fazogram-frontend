@@ -36,7 +36,6 @@ const index = () => {
   }, [])
 
   const [value, setValue] = useState("")
-  const user = useSelector(state => state.user)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
