@@ -3,8 +3,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 const appApi = createApi({
     reducerPath: "appApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: "https://fgram.foxdev.uz/"
-        // baseUrl: "http://localhost:5001"
+        // baseUrl: "https://fgram.foxdev.uz/"
+        baseUrl: "https://fazogram-backend.onrender.com"
     }),
 
     endpoints: (bulider) => ({

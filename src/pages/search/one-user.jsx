@@ -1,7 +1,7 @@
 import { Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux'
 import { MailOutlined, VideoCameraOutlined, PhoneOutlined } from "@ant-design/icons";
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useRef, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { addNotifications, resetNotifications } from '/src/features/userSlice'
 import { AppContext } from '../../context/appContext'
@@ -79,7 +79,12 @@ const profil = () => {
             </div>
             <div className="profil_btn">
                 <Button><PhoneOutlined className='rotate-90' />Audio qo'ng'iroq</Button>
-                <Button onClick={() => callUser(userData._id)}><VideoCameraOutlined />Video qo'ng'iroq</Button>
+                <Button
+                    onClick={() => navigate(`/videoqongiroq/${userData._id}`)}
+                >
+                    <VideoCameraOutlined />
+                    Video qo'ng'iroq
+                </Button>
                 <Button onClick={() => handlePrivateMemberMsg(userData)}><MailOutlined />Xabar yuborish</Button>
             </div>
             <div className="profil_post">
